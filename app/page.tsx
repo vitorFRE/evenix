@@ -1,5 +1,6 @@
 import Header from '@/components/header'
-import HeroAndDetails from '@/components/hero-and-details'
+import { About } from '@/components/home/about'
+import HeroAndDetails from '@/components/home/hero-and-details'
 import TopBar from '@/components/top-bar'
 
 export default function Home() {
@@ -8,6 +9,7 @@ export default function Home() {
 			<TopBar />
 			<Header />
 			<HeroAndDetails />
+			<About />
 		</main>
 	)
 }

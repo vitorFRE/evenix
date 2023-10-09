@@ -1,48 +1,10 @@
 'use client'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
-import { useAnimation } from 'framer-motion'
 import { ArrowRight, CheckCheck } from 'lucide-react'
-import { useEffect } from 'react'
-import { motion } from 'framer-motion'
+import StickyImage from '../utils/scroll-animation'
 
 const HeroAndDetails = () => {
-	const controls = useAnimation()
-
-	useEffect(() => {
-		const image = document.querySelector('#sticky-image') as HTMLImageElement
-		const imageTopOffset = image.offsetTop
-
-		const scrollHandler = () => {
-			const scrollTop = window.scrollY
-			const windowWidth = window.innerWidth
-
-			if (windowWidth > 1200) {
-				const secondSection = document.querySelector(
-					'#second-section'
-				) as HTMLImageElement
-				const imageBottomOffset =
-					secondSection.offsetTop + secondSection.clientHeight - image.clientHeight - 64
-
-				if (scrollTop >= imageTopOffset && scrollTop <= imageBottomOffset) {
-					controls.start({ y: scrollTop - imageTopOffset })
-				} else if (scrollTop < imageTopOffset) {
-					controls.start({ y: 0 })
-				} else {
-					controls.start({ y: imageBottomOffset - imageTopOffset })
-				}
-			}
-		}
-
-		window.addEventListener('scroll', scrollHandler)
-		window.addEventListener('resize', scrollHandler)
-
-		return () => {
-			window.removeEventListener('scroll', scrollHandler)
-			window.removeEventListener('resize', scrollHandler)
-		}
-	}, [controls])
-
 	return (
 		<>
 			{/* Hero Section */}
@@ -54,7 +16,7 @@ const HeroAndDetails = () => {
 						<h1 className='font-bold text-5xl leading-[55px] max-w-[512px] mb-6'>
 							Planeje seu evento com facilidade
 						</h1>
-						<p className='text-lg  text-[#979AA0] max-w-[512px] mb-8'>
+						<p className='text-lg  text-slate-400 max-w-[512px] mb-8'>
 							A Evenix é a ferramenta perfeita para organizadores de eventos de todos os
 							tamanhos. Nossa IA inteligente pode ajudá-lo a planejar eventos de forma
 							rápida e fácil, sem comprometer a qualidade.
@@ -67,15 +29,11 @@ const HeroAndDetails = () => {
 						</div>
 					</div>
 					{/* Lado direito */}
-					<motion.div
-						id='sticky-image'
-						initial={{ y: 0 }}
-						animate={controls}
-						transition={{ type: 'spring', stiffness: 50, damping: 10 }}>
-						<picture>
-							<img src='/images/card.svg' alt='Card' />
-						</picture>
-					</motion.div>
+					<StickyImage
+						marginBottom={64}
+						src={'/images/card.svg'}
+						stopAt={'second-section'}
+					/>
 				</div>
 			</section>
 			{/* Details Section */}
