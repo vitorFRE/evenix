@@ -4,20 +4,20 @@ import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
 export const About = () => {
 	return (
 		<section className='container mt-16'>
-			<div className='flex justify-between'>
+			<div className='flex flex-col gap-4 md:flex-row justify-between'>
 				<div>
 					<span className='text-primary font-semibold mb-2'>Poupe tempo</span>
 					<h2 className='font-bold text-4xl max-w-[250px] mb-4'>
 						Por que nossa plataforma
 					</h2>
-					<p className='max-w-[520px] text-lg text-slate-400'>
+					<p className='max-w-[520px] md:text-lg text-slate-400'>
 						Com a nossa plataforma de planejamento de eventos, você não apenas economiza
 						tempo, mas também maximiza a eficiência em cada etapa do processo. Utilizando
 						a mais recente tecnologia de IA, nossa solução simplifica tarefas complexas,
 						como gerenciamento de convidados, logística e promoção.
 					</p>
 				</div>
-				<div className='bg-white rounded-md max-w-[520px] pt-6 pl-10 pb-12 overflow-hidden'>
+				<div className='bg-white rounded-md max-w-full md:max-w-[320px] lg:max-w-[520px] pt-6 pl-10 pb-6 md:pb-12 overflow-hidden'>
 					<CalendarCheck className='text-primary mb-5' size={46} />
 					<h3 className='text-lg font-semibold text-slate-900 mb-4'>Agenda</h3>
 					<p className='text-slate-600 pr-4 mb-6'>
@@ -42,8 +42,8 @@ export const About = () => {
 				</div>
 			</div>
 
-			<div className='flex justify-between mt-8'>
-				<div className='bg-white rounded-md max-w-[520px] pt-6 pl-10 pb-12 overflow-hidden'>
+			<div className='flex flex-col-reverse gap-4 md:flex-row justify-between mt-8'>
+				<div className='bg-white rounded-md max-w-full md:max-w-[320px] lg:max-w-[520px] pt-6 pl-10 pb-6 md:pb-12 overflow-hidden'>
 					<User2 className='text-primary mb-5' size={46} />
 					<h3 className='text-lg font-semibold text-slate-900 mb-4'>Gerencie</h3>
 					<p className='text-slate-600 pr-4 mb-6'>
@@ -75,7 +75,7 @@ export const About = () => {
 					<h2 className='font-bold text-4xl max-w-[260px] mb-4'>
 						Simplificando a Organização
 					</h2>
-					<p className='max-w-[520px] text-lg text-slate-400'>
+					<p className='max-w-[520px] md:text-lg text-slate-400'>
 						Simplificar a organização de eventos é essencial para garantir o sucesso e a
 						eficiência em cada etapa do processo. Com nossa plataforma de planejamento de
 						eventos, tornamos simples o gerenciamento de convidados, logística e promoção.

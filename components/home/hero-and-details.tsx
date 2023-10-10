@@ -1,7 +1,7 @@
 'use client'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
-import { ArrowRight, CheckCheck } from 'lucide-react'
+import { Activity, ArrowRight, Award, CheckCheck, PiggyBank, User2 } from 'lucide-react'
 import StickyImage from '../utils/scroll-animation'
 
 const HeroAndDetails = () => {
@@ -9,7 +9,7 @@ const HeroAndDetails = () => {
 		<>
 			{/* Hero Section */}
 			<section className='container mt-16'>
-				<div className='flex items-center justify-between'>
+				<div className='sm:flex items-center justify-between'>
 					{/* Lado esquerdo */}
 					<div>
 						<Badge className='mb-3'>o melhor para seu evento</Badge>
@@ -21,7 +21,7 @@ const HeroAndDetails = () => {
 							tamanhos. Nossa IA inteligente pode ajudá-lo a planejar eventos de forma
 							rápida e fácil, sem comprometer a qualidade.
 						</p>
-						<div className='flex gap-6'>
+						<div className='flex flex-col sm:flex-row gap-4 sm:gap-6'>
 							<Button>Planeje seu evento</Button>
 							<Button variant={'secondary'}>
 								Contato <ArrowRight className='ml-2' size={16} />
@@ -30,6 +30,7 @@ const HeroAndDetails = () => {
 					</div>
 					{/* Lado direito */}
 					<StickyImage
+						className='hidden md:block'
 						marginBottom={64}
 						src={'/images/card.svg'}
 						stopAt={'second-section'}
@@ -39,9 +40,9 @@ const HeroAndDetails = () => {
 			{/* Details Section */}
 			<section id='second-section' className='bg-primary mt-16'>
 				<div className='container py-16'>
-					<div className='grid grid-cols-2 gap-12 max-w-[702px]'>
+					<div className='grid grid-cols-1 md:grid-cols-2 gap-12 max-w-[702px]'>
 						<div>
-							<CheckCheck size={16} />
+							<Award size={28} />
 							<h2 className='font-bold text-xl mb-2 mt-4'>Compromisso</h2>
 							<p className='text-[#D3E7FF]'>
 								Nossa IA inteligente pode criar uma agenda que se adapta às suas
@@ -49,27 +50,25 @@ const HeroAndDetails = () => {
 							</p>
 						</div>
 						<div>
-							<CheckCheck size={16} />
-							<h2 className='font-bold text-xl mb-2 mt-4'>Compromisso</h2>
+							<User2 size={28} />
+							<h2 className='font-bold text-xl mb-2 mt-4'>Convidados</h2>
 							<p className='text-[#D3E7FF]'>
-								Nossa IA inteligente pode criar uma agenda que se adapta às suas
-								necessidades e às de seus participantes.
+								Acompanhe seus participantes, envie convites e confirme presenças com
+								facilidade.
 							</p>
 						</div>
 						<div>
-							<CheckCheck size={16} />
-							<h2 className='font-bold text-xl mb-2 mt-4'>Compromisso</h2>
+							<PiggyBank size={28} />
+							<h2 className='font-bold text-xl mb-2 mt-4'>Finanças</h2>
 							<p className='text-[#D3E7FF]'>
-								Nossa IA inteligente pode criar uma agenda que se adapta às suas
-								necessidades e às de seus participantes.
+								Controle seus gastos e receba pagamentos com facilidade.
 							</p>
 						</div>
 						<div>
-							<CheckCheck size={16} />
-							<h2 className='font-bold text-xl mb-2 mt-4'>Compromisso</h2>
+							<Activity size={28} />
+							<h2 className='font-bold text-xl mb-2 mt-4'>Relatórios</h2>
 							<p className='text-[#D3E7FF]'>
-								Nossa IA inteligente pode criar uma agenda que se adapta às suas
-								necessidades e às de seus participantes.
+								Acompanhe o desempenho do seu evento e obtenha insights valiosos.
 							</p>
 						</div>
 					</div>

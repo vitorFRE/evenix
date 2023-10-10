@@ -5,9 +5,15 @@ interface StickyImageProps {
 	src: string
 	stopAt: string
 	marginBottom?: number
+	className?: string
 }
 
-const StickyImage: React.FC<StickyImageProps> = ({ src, stopAt, marginBottom }) => {
+const StickyImage: React.FC<StickyImageProps> = ({
+	src,
+	stopAt,
+	marginBottom,
+	className
+}) => {
 	const controls: AnimationControls = useAnimation()
 
 	useEffect(() => {
@@ -27,18 +33,21 @@ const StickyImage: React.FC<StickyImageProps> = ({ src, stopAt, marginBottom }) 
 
 		const scrollHandler = () => {
 			const scrollTop = window.scrollY
+			const windowWidth = window.innerWidth
 
-			if (
-				scrollTop >= imageTopOffset &&
-				scrollTop <= stopSectionBottomOffset - image.clientHeight
-			) {
-				controls.start({ y: scrollTop - imageTopOffset })
-			} else if (scrollTop < imageTopOffset) {
-				controls.start({ y: 0 })
-			} else {
-				controls.start({
-					y: stopSectionBottomOffset - imageTopOffset - image.clientHeight
-				})
+			if (windowWidth > 1023) {
+				if (
+					scrollTop >= imageTopOffset &&
+					scrollTop <= stopSectionBottomOffset - image.clientHeight
+				) {
+					controls.start({ y: scrollTop - imageTopOffset })
+				} else if (scrollTop < imageTopOffset) {
+					controls.start({ y: 0 })
+				} else {
+					controls.start({
+						y: stopSectionBottomOffset - imageTopOffset - image.clientHeight
+					})
+				}
 			}
 		}
 
@@ -54,6 +63,7 @@ const StickyImage: React.FC<StickyImageProps> = ({ src, stopAt, marginBottom }) 
 			initial={{ y: 0 }}
 			id='sticky-image'
 			animate={controls}
+			className={className}
 			transition={{ type: 'spring', stiffness: 50, damping: 10 }}>
 			<picture>
 				<img src={src} alt='Card' />
