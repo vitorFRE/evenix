@@ -42,12 +42,10 @@ const integrations = [
 	}
 ]
 
-export const Integrations = () => {
+const Integrations = () => {
 	const cardWidth = 430
 	const minWidth = 1440
-
-	const containerWidth =
-		typeof window !== 'undefined' ? Math.max(window.innerWidth, minWidth) : minWidth
+	const containerWidth = Math.max(window.innerWidth, minWidth)
 
 	const repeatTimes = Math.ceil(containerWidth / cardWidth) + 1
 
@@ -67,7 +65,7 @@ export const Integrations = () => {
 
 	return (
 		<div className='mt-32'>
-			<div className='flex flex-col justify-center items-center'>
+			<div className='container flex flex-col md:justify-center md:items-center'>
 				<span className='text-primary font-semibold mb-2'>Integrações</span>
 				<h2 className='font-bold text-4xl mb-4'>
 					Escolha as integrações que se ajustam ao seu gosto
@@ -75,7 +73,6 @@ export const Integrations = () => {
 			</div>
 			<div className='overflow-hidden w-full flex mt-11'>
 				<motion.div
-					suppressHydrationWarning
 					variants={tickerVariants}
 					initial='animate'
 					animate='animate'
@@ -99,3 +96,5 @@ export const Integrations = () => {
 		</div>
 	)
 }
+
+export default Integrations
