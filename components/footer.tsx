@@ -1,7 +1,15 @@
+'use client'
+
 import { ChevronUp, Github } from 'lucide-react'
 import Link from 'next/link'
 
 export const Footer = () => {
+	const scrollParaTopo = () => {
+		window.scrollTo({
+			top: 0,
+			behavior: 'smooth' // Adiciona um efeito de rolagem suave
+		})
+	}
 	return (
 		<footer className='container'>
 			<div className='flex gap-2 justify-center sm:justify-between items-center'>
@@ -26,7 +34,9 @@ export const Footer = () => {
 						vitorFRE
 					</Link>
 				</p>
-				<p className='text-white/70 cursor-pointer font-medium flex gap-1'>
+				<p
+					className='text-white/70 cursor-pointer font-medium flex gap-1'
+					onClick={scrollParaTopo}>
 					Voltar para o topo <ChevronUp className='text-[#6325C7]' />{' '}
 				</p>
 			</div>

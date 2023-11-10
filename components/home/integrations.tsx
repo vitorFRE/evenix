@@ -2,7 +2,7 @@
 
 import { Github } from 'lucide-react'
 import { IntegrationCard } from '../utils/integration-card'
-import { motion } from 'framer-motion'
+import Marquee from 'react-fast-marquee'
 
 const integrations = [
 	{
@@ -42,27 +42,7 @@ const integrations = [
 	}
 ]
 
-const Integrations = () => {
-	const cardWidth = 430
-	const minWidth = 1440
-	const containerWidth = Math.max(window.innerWidth, minWidth)
-
-	const repeatTimes = Math.ceil(containerWidth / cardWidth) + 1
-
-	const tickerVariants = {
-		animate: {
-			x: [-cardWidth * repeatTimes, 0],
-			transition: {
-				x: {
-					duration: 15,
-					repeat: Infinity,
-					repeatType: 'loop',
-					ease: 'linear'
-				}
-			}
-		}
-	}
-
+const MarqueeSaction = () => {
 	return (
 		<div className='mt-32'>
 			<div className='container flex flex-col md:justify-center md:items-center'>
@@ -72,29 +52,19 @@ const Integrations = () => {
 				</h2>
 			</div>
 			<div className='overflow-hidden w-full flex mt-11'>
-				<motion.div
-					variants={tickerVariants}
-					initial='animate'
-					animate='animate'
-					style={{
-						display: 'flex',
-						width: `${cardWidth * repeatTimes}px`
-					}}>
-					{Array(repeatTimes)
-						.fill(integrations)
-						.flat()
-						.map((integration, index) => (
-							<IntegrationCard
-								key={index}
-								icon={integration.icon}
-								title={integration.title}
-								description={integration.description}
-							/>
-						))}
-				</motion.div>
+				<Marquee pauseOnHover>
+					{integrations.map((integration, index) => (
+						<IntegrationCard
+							key={index}
+							icon={integration.icon}
+							title={integration.title}
+							description={integration.description}
+						/>
+					))}
+				</Marquee>
 			</div>
 		</div>
 	)
 }
 
-export default Integrations
+export default MarqueeSaction
